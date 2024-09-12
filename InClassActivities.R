@@ -31,11 +31,10 @@ floods$dateF <- ymd_hm(floods$datetime,
 
 # Prompt 3: What was the earliest date that each river reached the flood stage?
 
-floods$doy <- yday(floods$dateF)
 earliestFlood <- floods %>%
   filter(gheight.ft >= flood.ft) %>%
   group_by(names) %>%
-  summarise(earliest = dateF[which.min(doy)])
+  summarise(earliest = min(dateF))
 
 # WITHLACOOCHEE RIVER AT US 301 AT TRILBY: 2017-09-11 08:15:00
 # FISHEATING CREEK AT PALMDALE: 2017-09-11 03:00:00
